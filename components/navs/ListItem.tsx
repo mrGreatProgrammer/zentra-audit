@@ -3,7 +3,7 @@ import { NavigationMenuLink } from "../ui/navigation-menu"
 import { cn } from '@/lib/utils';
 
 
-export const ListItem = React.forwardRef<
+const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
@@ -27,3 +27,6 @@ export const ListItem = React.forwardRef<
     </li>
   )
 })
+ListItem.displayName = "ListItem"
+
+export default ListItem;

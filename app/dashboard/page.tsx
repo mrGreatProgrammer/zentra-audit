@@ -9,7 +9,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { ListItem } from "@/components/navs/ListItem";
+import ListItem  from "@/components/navs/ListItem";
 import ImagesForm from "@/components/forms/ImagesForm";
 import UploaderForm from "@/components/forms/UploaderForm";
 import HeroForm from "@/components/forms/HeroForm";

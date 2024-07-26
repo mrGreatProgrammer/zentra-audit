@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderNav from "./navs/HeaderNav";
+import { Toaster } from "./ui/toaster";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
         </div>
         <HeaderNav />
       </div>
+      <Toaster />
     </header>
   );
 };

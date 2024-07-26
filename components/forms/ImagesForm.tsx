@@ -55,7 +55,7 @@ const ImagesForm:React.FC<ImagesFormProps> = ({img,setImg}) => {
         <div className="grid grid-cols-3 gap-3 py-4">
           <RadioGroup defaultValue="comfortable">
             {images?.map((e: any) => (
-              <div className="flex items-center space-x-2">
+              <div key={e.id} className="flex items-center space-x-2">
                 <RadioGroupItem value="default" id="r1" />
                 <Label htmlFor="r1">
                   <Image src={e.link} alt={e.altTxt} width={150} height={150} />

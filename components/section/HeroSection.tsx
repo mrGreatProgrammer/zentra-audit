@@ -10,7 +10,7 @@ const HeroSection = async () => {
     <section className="flex items-end container mx-auto justify-between pt-10">
       <div className="max-w-xl">
         <h1 className="text-3xl">
-          "Zentra Audit – Ваш ключ к прибыльному бизнесу"
+          Zentra Audit – Ваш ключ к прибыльному бизнесу
         </h1>
         <p className="pt-8 pb-12">
           Мы специализируемся на анализе убыточных компаний и выводе их в
