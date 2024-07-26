@@ -37,7 +37,7 @@ const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
 
   React.useEffect(() => {
     axios
-      .get("/api/images", { params: { page, limit: 30 } })
+      .get("/api/upload", { params: { page, limit: 30 } })
       .then((res) => console.log(res))
       .catch((err) => console.error("err", err));
   }, []);

@@ -26,7 +26,7 @@ const UploaderForm = () => {
 
     formData.append("image", image as Blob);
 
-    fetch(`/api/iamges`, {
+    fetch(`/api/upload`, {
       method: "POST",
       body: formData,
     })
