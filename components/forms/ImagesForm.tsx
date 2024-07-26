@@ -26,12 +26,13 @@ import axios from "axios";
 // } from "@/components/ui/pagination";
 
 interface ImagesFormProps {
-    img: any;
-    setImg: any;
-
+  img: any;
+  setImg: any;
 }
 
-const ImagesForm:React.FC<ImagesFormProps> = ({img,setImg}) => {
+const a = ""
+
+const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
   const [images, setImages] = React.useState<any>();
   const [page, setPage] = React.useState<number>(1);
 
@@ -40,7 +41,7 @@ const ImagesForm:React.FC<ImagesFormProps> = ({img,setImg}) => {
       .get("/api/images", { params: { page, limit: 30 } })
       .then((res) => console.log(res))
       .catch((err) => console.error("err", err));
-  }, []);
+  }, [a]);
 
   return (
     <Dialog>

@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useToast } from "../ui/use-toast";
+import { ToastAction } from "../ui/toast";
 
 const UploaderForm = () => {
   const [loading, setLoading] = React.useState(false);
@@ -31,8 +32,11 @@ const UploaderForm = () => {
     })
       .then(async (r) => {
         toast({
-          title: "Успешно!",
-          description: "Изображение успешно добавлено!",
+          title: "Scheduled: Catch up ",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+          action: (
+            <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+          ),
         });
       })
       .catch((err) => {
@@ -71,8 +75,8 @@ const UploaderForm = () => {
           </div>
         </div>
         <DialogFooter>
-          <Button className="text-white" type="submit">
-            Save changes
+          <Button disabled={loading} onClick={()=>onSubmit()} className="text-white" type="submit">
+            {loading?"Loading...":"Save"}
           </Button>
         </DialogFooter>
       </DialogContent>
