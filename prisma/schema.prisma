@@ -91,6 +91,13 @@ model ContactUs {
   comment   String
   createdAt DateTime @default(now())
 }
+model LeaveMessageUs {
+  id        Int      @id @default(autoincrement())
+  username  String
+  telephone String
+  comment   String
+  createdAt DateTime @default(now())
+}
 
 model Comment {
   id        Int      @id @default(autoincrement())

@@ -16,6 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Textarea } from "../ui/textarea";
+import axios from "axios";
+import { useToast } from "../ui/use-toast";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -28,16 +30,33 @@ const formSchema = z.object({
 });
 
 const HeroForm = () => {
+  const [loading, setLoading] = React.useState(false);
   const [img, setImg] = React.useState<any>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
+  const { toast } = useToast();
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    setLoading(true);
+    axios
+      .post(`/api/sections/hero`, { ...values, imgId: img })
+      .then(async (r) => {
+        toast({
+          title: "Успешно!",
+          description: "Изображение успешно добавленно!",
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        toast({
+          title: "Ошибка!",
+          description: err.message,
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
@@ -50,7 +69,7 @@ const HeroForm = () => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Телефон</FormLabel>
+                <FormLabel>Title</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -63,7 +82,7 @@ const HeroForm = () => {
             name="txt"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Сообщение</FormLabel>
+                <FormLabel>Text</FormLabel>
                 <FormControl>
                   <Textarea {...field} />
                 </FormControl>
@@ -71,8 +90,8 @@ const HeroForm = () => {
               </FormItem>
             )}
           />
-          <Button className="w-full text-white" type="submit">
-            Отправить
+          <Button disabled={loading} className="w-full text-white" type="submit">
+            {loading?"Загрзука...":"Сохранить"}
           </Button>
         </form>
       </Form>

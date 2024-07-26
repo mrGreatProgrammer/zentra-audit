@@ -38,7 +38,7 @@ const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
   React.useEffect(() => {
     axios
       .get("/api/upload", { params: { page, limit: 30 } })
-      .then((res) => console.log(res))
+      .then((res) => {setImages(res.data)})
       .catch((err) => console.error("err", err));
   }, []);
 
@@ -53,10 +53,10 @@ const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
           <DialogDescription>Выберите картинку из базы</DialogDescription>
         </DialogHeader>
         <div className="grid grid-cols-3 gap-3 py-4">
-          <RadioGroup defaultValue="comfortable">
+          <RadioGroup onValueChange={(imgId)=>setImg(imgId)} defaultValue={img}>
             {images?.map((e: any) => (
               <div key={e.id} className="flex items-center space-x-2">
-                <RadioGroupItem value="default" id="r1" />
+                <RadioGroupItem value={e.id} id="r1" />
                 <Label htmlFor="r1">
                   <Image src={e.link} alt={e.altTxt} width={150} height={150} />
                 </Label>
@@ -67,7 +67,7 @@ const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
 
         <DialogFooter>
           <Button className="text-white" type="submit">
-            Save changes
+            Save
           </Button>
         </DialogFooter>
       </DialogContent>
