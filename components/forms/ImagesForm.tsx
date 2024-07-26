@@ -30,7 +30,6 @@ interface ImagesFormProps {
   setImg: any;
 }
 
-const a = ""
 
 const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
   const [images, setImages] = React.useState<any>();
@@ -41,7 +40,7 @@ const ImagesForm: React.FC<ImagesFormProps> = ({ img, setImg }) => {
       .get("/api/images", { params: { page, limit: 30 } })
       .then((res) => console.log(res))
       .catch((err) => console.error("err", err));
-  }, [a]);
+  }, []);
 
   return (
     <Dialog>

@@ -18,9 +18,9 @@ import { ToastAction } from "../ui/toast";
 const UploaderForm = () => {
   const [loading, setLoading] = React.useState(false);
   const [image, setImage] = React.useState<any>(null);
+  const { toast } = useToast();
 
   function onSubmit() {
-    const { toast } = useToast();
     setLoading(true);
     const formData = new FormData();
 
